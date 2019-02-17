@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
+"""Classes for S3 Buckets."""
 
 from pathlib import Path
 from mimetypes import guess_type
-
-
-"""Classes for S3 Buckets."""
 
 class BucketManager:
     """Manage an S3 Buckte."""
@@ -56,6 +54,7 @@ class BucketManager:
         pol.put(Policy=policy)
 
     def configure_website(self, bucket):
+        """Configure s3 website hosting for bucket."""
         bucket.Website().put(WebsiteConfiguration={
             'ErrorDocument': {
                 'Key': 'error.html'
@@ -78,6 +77,7 @@ class BucketManager:
         )
 
     def sync(self, pathname, bucket_name):
+        """Sync contents of path to bucket."""
         bucket = self.s3.Bucket(bucket_name)
         root = Path(pathname).expanduser().resolve()
         def handle_directory(target):
