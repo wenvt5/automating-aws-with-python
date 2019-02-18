@@ -45,3 +45,4 @@ Webtron currently has the following features:
 - List contents of a bucket
 - Create and set up bucket
 - sync directory tree to bucket
+- Set AWS profile with --profile = <profileName>
